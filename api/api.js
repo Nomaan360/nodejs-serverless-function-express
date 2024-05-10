@@ -5,6 +5,7 @@ import cors from 'cors';
 app.use(cors({origin: 'https://sendmailreact-p69o.vercel.app'}));
 
 export default function handler(req, res) {
+    try {
     console.log(req.body); // Log the text fields
     //@ts-ignore
     console.log(req.files); // Log file info if any files are uploaded
@@ -38,7 +39,7 @@ export default function handler(req, res) {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
     
-    try {
+    
         // Simulate email sending logic
         transporter.sendMail(mailOptions, function(error, info) {
             if (error) {
@@ -56,6 +57,6 @@ export default function handler(req, res) {
         return res.status(200).json({ message: 'Email sent successfully' });
     } catch (error) {
         console.error('Failed to send email:', error);
-        return res.status(500).json({ error: 'Failed to process your request' });
+        return res.status(500).json({ error: error });
     }
 }
