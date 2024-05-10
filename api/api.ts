@@ -8,11 +8,9 @@ app.use(cors({origin: 'https://sendmailreact-p69o.vercel.app'}));
 export default function handler(req : VercelRequest, res: VercelResponse) {
     try {
     console.log(req.body)
-    console.log(req.headers)
     console.log(req.method)
     console.log(req.url)
     console.log(req.query)
-    console.log(req.rawHeaders)
     console.log(req.statusCode)
 
     const { sender, to, subject, text,uname,unumber,uemail,uexperience } = req.body;
