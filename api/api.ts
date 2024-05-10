@@ -7,7 +7,7 @@ app.use(cors())
 
 export default function handler(req : VercelRequest, res: VercelResponse) {
     try {
-    console.log(req.body)
+    console.log(req.body.rahul)
     console.log(req.method)
     console.log(req.url)
     console.log(req.query)
