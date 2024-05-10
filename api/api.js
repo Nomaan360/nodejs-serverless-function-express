@@ -33,6 +33,8 @@ export default function handler(req, res) {
         attachments: attachments
     };
 
+    res.setHeader('Access-Control-Allow-Origin', '*');
+
     res.set({
         'origin': 'https://sendmailreact-p69o.vercel.app',
         'mynameis': 'rahul',
