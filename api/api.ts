@@ -1,5 +1,9 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 import nodemailer from 'nodemailer';
+import express from 'express';
+import cors from 'cors';
+const app = express();
+app.use(cors())
 
 export default function handler(req : VercelRequest, res: VercelResponse) {
     try {
@@ -9,7 +13,7 @@ export default function handler(req : VercelRequest, res: VercelResponse) {
     console.log(req.query)
     console.log(req.statusCode)
 
-    const { sender, to, subject, text,uname,unumber,uemail,uexperience } = req.body;
+    const { sender, to, subject, text,uname,unumber,uemail,uexperience } = req?.body;
     //@ts-ignore
     const attachments = req.files.map(file => ({
         filename: file.originalname,
@@ -32,12 +36,6 @@ export default function handler(req : VercelRequest, res: VercelResponse) {
         html: `<p>You have received a new message from your website contact form.</p>Here are the details:<br><br> Name: ${uname}<br> Email: ${uemail}<br> Phone: ${unumber}<br> Experience: ${uexperience}<br> Message: ${text}`,
         attachments: attachments
     };
-    res.setHeader('Access-Control-Allow-Origin', 'https://sendmailreact-p69o.vercel.app');
-    res.setHeader('Access-Control-Allow-Origin', '*');
-
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    
     
         // Simulate email sending logic
         transporter.sendMail(mailOptions, function(error, info) {
