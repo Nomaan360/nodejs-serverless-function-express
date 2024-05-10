@@ -1,14 +1,19 @@
+import type { VercelRequest, VercelResponse } from '@vercel/node'
 import nodemailer from 'nodemailer';
 import express from 'express';
 const app = express();
 import cors from 'cors';
 app.use(cors({origin: 'https://sendmailreact-p69o.vercel.app'}));
 
-export default function handler(req, res) {
+export default function handler(req : VercelRequest, res: VercelResponse) {
     try {
-    console.log(req); // Log the text fields
-    //@ts-ignore
-    console.log(req.files); // Log file info if any files are uploaded
+    console.log(req.body)
+    console.log(req.headers)
+    console.log(req.method)
+    console.log(req.url)
+    console.log(req.query)
+    console.log(req.rawHeaders)
+    console.log(req.statusCode)
 
     const { sender, to, subject, text,uname,unumber,uemail,uexperience } = req.body;
     //@ts-ignore
