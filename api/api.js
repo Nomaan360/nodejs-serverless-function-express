@@ -32,6 +32,13 @@ export default function handler(req, res) {
         html: `<p>You have received a new message from your website contact form.</p>Here are the details:<br><br> Name: ${uname}<br> Email: ${uemail}<br> Phone: ${unumber}<br> Experience: ${uexperience}<br> Message: ${text}`,
         attachments: attachments
     };
+
+    res.set({
+        'origin': 'https://sendmailreact-p69o.vercel.app',
+        'mynameis': 'rahul',
+        'ETag': '12345'
+    })
+
     try {
         // Simulate email sending logic
         transporter.sendMail(mailOptions, function(error, info) {
