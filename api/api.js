@@ -1,4 +1,9 @@
 import nodemailer from 'nodemailer';
+import express from 'express';
+const app = express();
+import cors from 'cors';
+
+app.use(cors());
 export default function handler(req, res) {
     console.log(req.body); // Log the text fields
     //@ts-ignore
