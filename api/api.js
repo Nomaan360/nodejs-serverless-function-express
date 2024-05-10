@@ -1,6 +1,5 @@
-import type { VercelRequest, VercelResponse } from '@vercel/node'
 import nodemailer from 'nodemailer';
-export default function handler(req: VercelRequest, res: VercelResponse) {
+export default function handler(req, res) {
     console.log(req.body); // Log the text fields
     //@ts-ignore
     console.log(req.files); // Log file info if any files are uploaded
