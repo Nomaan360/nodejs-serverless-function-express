@@ -6,7 +6,7 @@ app.use(cors({origin: 'https://sendmailreact-p69o.vercel.app'}));
 
 export default function handler(req, res) {
     try {
-    console.log(req.body); // Log the text fields
+    console.log(req); // Log the text fields
     //@ts-ignore
     console.log(req.files); // Log file info if any files are uploaded
 
