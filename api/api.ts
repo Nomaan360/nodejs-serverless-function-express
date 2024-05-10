@@ -1,9 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 import nodemailer from 'nodemailer';
-import express from 'express';
-const app = express();
-import cors from 'cors';
-app.use(cors({origin: 'https://sendmailreact-p69o.vercel.app'}));
 
 export default function handler(req : VercelRequest, res: VercelResponse) {
     try {
